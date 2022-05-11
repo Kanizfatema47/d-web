@@ -5,13 +5,13 @@ const Navbar = () => {
     const menuItems =
         <>
 
-            <li ><a href='/'>Home</a></li>
+            <li ><Link to='/'>Home</Link></li>
 
-            <li><Link href='about'>About</Link></li>
-            <li><Link href='appoinments'>Appoinments</Link></li>
-            <li><Link href='reviews'>Reviews</Link></li>
-            <li><Link href='contact'>Contact Us</Link></li>
-            <li><Link href='login'>Login</Link></li>
+            <li><Link to='/about'>About</Link></li>
+            <li><Link to='/appoinments'>Appoinments</Link></li>
+            <li><Link to='/reviews'>Reviews</Link></li>
+            <li><Link to='/contact'>Contact Us</Link></li>
+            <li><Link to='/login'>Login</Link></li>
         </>
 
     return (
