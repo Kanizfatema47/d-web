@@ -27,8 +27,8 @@ const Services = () => {
     return (
         <div className='mx-24 mb-32'>
             <div className="section-title">
-                <h1 className='lg:text-5xl font-bold text-accent text-center sm:text-2xl'>Our Services</h1>
-                <h3 className='lg:text-2xl text-accent text-center my-12 mg:text-xl'>Services we provide</h3>
+                <h1 className='lg:text-4xl font-bold text-accent uppercase text-center sm:text-2xl'>Our Services</h1>
+                <h3 className='lg:text-xl text-accent text-center my-6 mg:text-xl'>Services we provide</h3>
             </div>
             <div className="grid lg:grid-cols-3 gap-15 sm:grid-cols-1 mx-0 gap-5">
                 {

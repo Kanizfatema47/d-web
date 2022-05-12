@@ -1,6 +1,7 @@
 import React from 'react';
 import doctor from '../../assets/images/doctor.png'
 import bg from '../../assets/images/appointment.png'
+import Button from './Button';
 
 
 const MakeAppoinment = () => {
@@ -9,12 +10,13 @@ const MakeAppoinment = () => {
             <div class="hero lg:min-h-screen sm:max-h-screen">
                 <div class="hero-content flex-col lg:flex-row-reverse">
                     <div class="text-center w-1/2 my-16 text-white lg:text-left">
-                        <h1 class="text-5xl font-bold">Login now!</h1>
-                        <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                        <h1 class="text-4xl font-bold">Make an appointment Today</h1>
+                        <p class="py-6">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsumis that it has a more-or-less normal distribution of letters,as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page</p>
+                        <Button>Get Started</Button>
                     </div>
                     <div class=" hidden  lg:block">
 
-                        <img src={doctor} alt="" className='mt-[-200px]' />
+                        <img src={doctor} alt="" className='mt-[-150px]' />
 
                     </div>
                 </div>
