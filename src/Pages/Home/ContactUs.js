@@ -1,6 +1,6 @@
 import React from 'react';
 import bg from '../../assets/images/appointment.png'
-import Button from './Button';
+import ButtonLink from './ButtonLink';
 const ContactUs = () => {
     return (
         <div class="hero lg:min-h-screen " style={{ background: `url(${bg})` }}>
@@ -21,7 +21,7 @@ const ContactUs = () => {
                         </div>
 
                         <div class="mt-6">
-                            <Button>Submit</Button>
+                            <ButtonLink>Submit</ButtonLink>
                         </div>
                     </div>
                 </div>

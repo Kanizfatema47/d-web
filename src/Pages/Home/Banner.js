@@ -1,5 +1,6 @@
 import React from 'react';
 import bannerimg from '../../assets/images/chair.png'
+import ButtonLink from './ButtonLink';
 const Banner = () => {
     return (
         <div>
@@ -9,7 +10,7 @@ const Banner = () => {
                     <div className=''>
                         <h1 class="text-5xl font-bold text-accent ">Your New Smile Starts Here</h1>
                         <p class="py-6 text-accent text-base  lg:w-10/12 sm:w-11/12">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the.</p>
-                        <button class="btn bg-gradient-to-l from-primary to-secondary uppercase text-white border-none text-sm">Get Started</button>
+                        <ButtonLink>Get Started</ButtonLink>
                     </div>
                 </div>
             </div>
