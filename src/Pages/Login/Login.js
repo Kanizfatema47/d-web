@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth'
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth'
 import { useForm } from 'react-hook-form';
+import Loading from '../Shared/Loading';
 const Login = () => {
 
     // const emailRef = useRef;
@@ -10,25 +11,31 @@ const Login = () => {
 
 
 
-    const [signInWithGoogle, user] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
 
 
+    const [signInWithEmailAndPassword, user, error, loading] = useSignInWithEmailAndPassword(auth)
+    let errorElement;
 
+    if (user || gUser) {
 
-    if (user) {
+        console.log(gUser)
+    }
 
-        console.log(user)
+    if (loading || gLoading) {
+        return <Loading></Loading>
+    }
+
+    if (error || gError) {
+        errorElement = <p>{error?.message || gError?.message}</p>
     }
     const onSubmit = data => {
         console.log(data);
+        signInWithEmailAndPassword(data.email, data.password);
     }
 
-    // const handleSubmit= e =>{
-    //     e.preventDefault();
-    //     email = emailRef.e.target.value;
-    //     password = passRef.e.target.value;
-    // }
+
 
     return (
         <div className='my-24'>
@@ -78,10 +85,10 @@ const Login = () => {
                                         value: true,
                                         message: "Password is required"
                                     },
-                                   minLength:{
-                                       value: 6,
-                                       message: "Must be 6 character and longer"
-                                   }
+                                    minLength: {
+                                        value: 6,
+                                        message: "Must be 6 character and longer"
+                                    }
                                 })} />
 
 
@@ -93,8 +100,8 @@ const Login = () => {
                             </label>
                         </div>
                         <input />
-
-                        <input className='btn w-full max-w-xs uppercase' type="submit"  value="Login"/>
+                        {errorElement}
+                        <input className='btn w-full max-w-xs uppercase' type="submit" value="Login" />
                     </form>
                     <p>New to doctors portal? <Link className='text-secondary' to='/register'> Create new account </Link> </p>
 
