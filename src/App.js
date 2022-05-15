@@ -5,6 +5,7 @@ import Home from './Pages/Home/Home';
 import Appoinments from './Pages/Appoinments/Appoinments';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Login/Register';
+import RequiredAuth from './Pages/Login/RequiredAuth';
 
 
 function App() {
@@ -15,7 +16,12 @@ function App() {
         <Route path='/' element={<Home></Home>}/>
 
 
-        <Route path='/appoinments' element={<Appoinments></Appoinments>}/>
+        <Route path='/appoinments' element=
+        {<RequiredAuth>
+          <Appoinments>
+            
+          </Appoinments>
+        </RequiredAuth>}/>
         <Route path='/login' element={<Login></Login>}/>
         <Route path='/register' element={<Register></Register>}/>
       </Routes>

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth'
 import { useForm } from 'react-hook-form';
@@ -16,10 +16,14 @@ const Login = () => {
 
     const [signInWithEmailAndPassword, user, error, loading] = useSignInWithEmailAndPassword(auth)
     let errorElement;
+    const navigate = useNavigate();
+    const location = useLocation();
+    let from= location.state?.form?.pathname || '/appoinments'
 
     if (user || gUser) {
 
         console.log(gUser)
+        navigate (from, {replace: true})
     }
 
     if (loading || gLoading) {
