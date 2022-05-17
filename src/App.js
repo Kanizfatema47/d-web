@@ -8,6 +8,9 @@ import Register from './Pages/Login/Register';
 import RequiredAuth from './Pages/Login/RequiredAuth';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import MyAppoinments from './Pages/Dashboard/MyAppoinments';
+import Review from './Pages/Dashboard/Review';
 
 
 function App() {
@@ -18,14 +21,24 @@ function App() {
         <Route path='/' element={<Home></Home>}/>
 
 
-        <Route path='/appoinments' element=
+        <Route path='appoinments' element=
         {<RequiredAuth>
           <Appoinments>
             
           </Appoinments>
         </RequiredAuth>}/>
-        <Route path='/login' element={<Login></Login>}/>
-        <Route path='/register' element={<Register></Register>}/>
+        <Route path='dashboard' element=
+        {<RequiredAuth>
+          <Dashboard></Dashboard>
+        </RequiredAuth>}>
+
+        <Route index element={<MyAppoinments></MyAppoinments>}/>
+        <Route path='review' element={<Review></Review>}/>
+
+        </Route>
+       
+        <Route path='login' element={<Login></Login>}/>
+        <Route path='register' element={<Register></Register>}/>
       </Routes>
       <ToastContainer></ToastContainer>
     </div>
