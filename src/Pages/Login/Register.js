@@ -3,11 +3,12 @@ import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfil
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../Hooks/useToken';
 import Loading from '../Shared/Loading';
 
 const Register = () => {
 
-    
+
 
 
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -18,26 +19,25 @@ const Register = () => {
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
     let errorElement;
-    
-    const navigate = useNavigate()  
-    if (user || gUser) {
+    const [token] = useToken(user || gUser)
+    const navigate = useNavigate()
+    if (token) {
+        navigate('/appoinments')
 
-        console.log(gUser)
     }
 
     if (loading || gLoading || updating) {
         return <Loading></Loading>
     }
 
-    if (error || gError  || updateError) {
+    if (error || gError || updateError) {
         errorElement = <p>{error?.message || gError?.message || updateError?.message}</p>
     }
-    const onSubmit =async data => {
+    const onSubmit = async data => {
         console.log(data);
-       await createUserWithEmailAndPassword(data.email, data.password);
-       await updateProfile({displayName: data.name})
-       console.log('update done')
-       navigate('/appoinments')
+        await createUserWithEmailAndPassword(data.email, data.password);
+        await updateProfile({ displayName: data.name })
+        console.log('update done')
     }
 
 
@@ -50,7 +50,7 @@ const Register = () => {
 
                         {/* name */}
 
-                    <div className="form-control w-full max-w-xs mx-auto text-center">
+                        <div className="form-control w-full max-w-xs mx-auto text-center">
                             <label className="label">
                                 <span className="label-text">Name</span>
 
@@ -62,7 +62,7 @@ const Register = () => {
                                         value: true,
                                         message: "Name is required"
                                     }
-                                   
+
                                 })} />
 
 
